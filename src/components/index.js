@@ -11,6 +11,8 @@ import AuthLayout from "./AuthLayout"
 import Select from "./Select"
 import SignUp from "./SignUp";
 import RTE from "./RTE";
+import PostForm from "./post-form/PostForm"
+import AuthLayout from "./AuthLayout"
 export {
     Header,
     Footer,
@@ -24,5 +26,7 @@ export {
     AuthLayout,
     Select,
     SignUp,
-    RTE
+    RTE,
+    PostForm,
+    AuthLayout,
 }
