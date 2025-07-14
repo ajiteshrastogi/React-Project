@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {login as authLogin} from '../app/authSlice'
 import {Button, Input, Logo} from './index'
 import { useDispatch } from 'react-redux';
-import { authservice } from '../appwrite/auth';
+import authservice from '../appwrite/auth';
 import {useForm} from 'react-hook-form';
 
 function Login() {

@@ -14,7 +14,7 @@ export class DatabaseService{
             this.storage = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userID}){
+    async createPost({title, slug, content, featuredImage, status, userId}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -25,7 +25,7 @@ export class DatabaseService{
                     content,
                     featuredImage,
                     status,
-                    userID
+                    userId
                 }
             )                       
         } catch (error) {
@@ -126,6 +126,10 @@ export class DatabaseService{
             conf.appwriteBucketId,
             fileID,
         )   
+    }
+
+    getFilePreview(fileID) {
+        return this.previewFile(fileID);
     }
 }
 

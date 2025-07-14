@@ -3,20 +3,23 @@ import { Container, PostCard } from "../components";
 import databaseService from "../appwrite/databases";
 function AllPost() {
     const [post, setPost] =  useState([])
-    useEffect(()=>{}, []);
-    databaseService.getPosts([]).then((posts)=>{
-        if(posts){
-            setPost(posts.documents)
-        }
-    })
+    useEffect(()=>{
+        databaseService.getPosts([]).then((posts)=>{
+            if(posts){
+                setPost(posts.documents)
+            }
+        })
+    }, []);
     return ( 
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
-                    {posts.map((post)=>{
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard post={post}/>
-                        </div>
+                    {post.map((post)=>{
+                        return (
+                            <div key={post.$id} className='p-2 w-1/4'>
+                                <PostCard post={post}/>
+                            </div>
+                        )
                     })}
                 </div>
             </Container>

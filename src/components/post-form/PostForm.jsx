@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {Button, Input, RTE, Select} from '../index'
-import { databaseService } from "../../appwrite/databases";
+import databaseService from "../../appwrite/databases";
 
 export default function PostForm ({post}) {
     const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
@@ -19,7 +19,7 @@ export default function PostForm ({post}) {
     // control ->  for controlling any form (this will be pass in the RTE)
 
     const navigate = useNavigate();
-    const userData =  useSelector(state => state.user.userData) // we want this userData for its id for saving in the post field userId(later)
+    const userData =  useSelector(state => state.auth?.userData) // we want this userData for its id for saving in the post field userId(later)
 
     // now thing to do after submit --> 
 
@@ -39,9 +39,14 @@ export default function PostForm ({post}) {
 
             const dbPost = await databaseService.updatePost(post.$id, {
                 ...data,  // rest data will spread as it is but image is new uploaded so
-                featuredImage : file ? file.$id : undefined
+                featuredImage : file ? file.$id : undefined,
+                userId: userData.$id
             })
-            if(dbPost) navigate(`/post/${dbPost.$id}`);
+            if (dbPost && dbPost.$id) {
+                navigate(`/post/${dbPost.$id}`);
+            } else {
+                alert("Failed to update post. Please check your data and try again.");
+            }
         }
         // now if we want to create new Post
         else {
@@ -56,8 +61,10 @@ export default function PostForm ({post}) {
                     ...data,
                     userId: userData.$id,
                 })
-                if(dbPost) {
+                if (dbPost && dbPost.$id) {
                     navigate(`/post/${dbPost.$id}`)
+                } else {
+                    alert("Failed to create post. Please check your data and try again.");
                 }
             }
 
@@ -125,7 +132,7 @@ export default function PostForm ({post}) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={databaseService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />

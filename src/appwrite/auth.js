@@ -14,7 +14,7 @@ export class AuthService{
 
     async createAccount ({email, password, name}){
         try {
-            const userAccount = await this.account.create(ID.unique, email, password, name);
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
                 // we will make a method so that if account create then it auto login done 
                 return this.login({email,password})

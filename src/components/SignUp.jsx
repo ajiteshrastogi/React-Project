@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authservice } from '../appwrite/auth';
+import authservice from '../appwrite/auth';
 import { login } from '../app/authSlice';
 import {Button, Input, Logo} from './index'
 import { useDispatch } from 'react-redux';
@@ -82,8 +82,5 @@ function SignUp() {
     </div>
   )
 }
-import React from 'react';
-import React, { useState } from 'react';
-
 
 export default SignUp;
