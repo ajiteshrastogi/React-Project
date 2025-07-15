@@ -128,6 +128,13 @@ export class DatabaseService{
         )   
     }
 
+    getFileView(fileID) {
+        return this.storage.getFileView(
+            conf.appwriteBucketId,
+            fileID
+        );
+    }
+
     getFilePreview(fileID) {
         return this.previewFile(fileID);
     }
