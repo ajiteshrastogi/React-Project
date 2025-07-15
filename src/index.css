@@ -1,3 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --accent-pink: #ff00cc;
+  --accent-blue: #00fff7;
+  --accent-green: #39ff14;
+  --accent-yellow: #fff700;
+  --accent-purple: #a020f0;
+  --bg-dark: #10101a;
+  --bg-gradient: linear-gradient(135deg, #181824 0%, #23243a 100%);
+  --card-glass: rgba(30, 32, 50, 0.7);
+  --border-accent: #00fff7;
+}
+
+body {
+  background: var(--bg-gradient);
+  color: #f3f3f3;
+  font-family: 'Poppins', Arial, sans-serif;
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+  transition: background 0.5s, color 0.5s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', 'Poppins', Arial, sans-serif;
+  color: var(--accent-blue);
+  letter-spacing: 0.04em;
+}
+
+a {
+  color: var(--accent-blue);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+a:hover {
+  color: var(--accent-pink);
+}
+
+.text-shadow-accent {
+  text-shadow: 0 2px 8px var(--accent-blue);
+}
+
+.glass-card {
+  background: var(--card-glass);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(0,255,247,0.18);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #181830;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--accent-blue);
+}

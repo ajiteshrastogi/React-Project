@@ -33,34 +33,29 @@ export default function Post() {
     };
 
     return post ? (
-        <div className="py-8">
+        <div className="py-12 min-h-screen bg-gradient-to-br from-[#181824] via-[#23243a] to-[#181824] flex items-center justify-center">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={databaseService.getFileView(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
-
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
-                                </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                </div>
-                <div className="browser-css">
-                    {parse(post.content)}
+                <div className="glass-card max-w-3xl mx-auto p-8 border border-[var(--accent-blue)] shadow-lg relative">
+                    <div className="w-full flex flex-col items-center mb-6">
+                        <img
+                            src={databaseService.getFileView(post.featuredImage)}
+                            alt={post.title}
+                            className="rounded-2xl max-h-96 object-cover w-full shadow-lg border border-[var(--accent-blue)] mb-4"
+                        />
+                        {isAuthor && (
+                            <div className="absolute right-8 top-8 flex gap-2 z-10">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <Button className="mr-2">Edit</Button>
+                                </Link>
+                                <Button onClick={deletePost} className="bg-red-600 text-white border-red-600 hover:bg-red-700 hover:border-red-700">Delete</Button>
+                            </div>
+                        )}
                     </div>
+                    <h1 className="text-3xl font-bold text-center mb-4 text-[var(--accent-blue)]" style={{fontFamily: 'Orbitron, Poppins, Arial, sans-serif'}}>{post.title}</h1>
+                    <div className="prose prose-invert prose-lg max-w-none text-gray-100" style={{fontFamily: 'Poppins, Arial, sans-serif'}}>
+                        {parse(post.content)}
+                    </div>
+                </div>
             </Container>
         </div>
     ) : null;

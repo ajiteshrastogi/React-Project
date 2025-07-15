@@ -26,23 +26,23 @@ function SignUp() {
     }
     return (
     <div className="flex items-center justify-center">
-            <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+            <div className={`mx-auto w-full max-w-lg bg-[var(--neon-card)] rounded-2xl p-10 border-2 border-[var(--neon-blue)] shadow-[0_0_32px_var(--neon-blue),0_0_64px_var(--neon-pink)] backdrop-blur-md`}>
             <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
                         <Logo width="100%" />
                     </span>
                 </div>
-                <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-                <p className="mt-2 text-center text-base text-black/60">
+                <h2 className="text-center text-2xl font-bold leading-tight text-[var(--neon-blue)] text-shadow-neon">Sign up to create account</h2>
+                <p className="mt-2 text-center text-base text-[var(--neon-pink)] text-shadow-neon">
                     Already have an account?&nbsp;
                     <Link
                         to="/login"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
+                        className="font-medium text-[var(--neon-blue)] hover:text-[var(--neon-pink)] transition-all duration-200 hover:underline text-shadow-neon"
                     >
                         Sign In
                     </Link>
                 </p>
-                {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+                {error && <p className="text-red-500 mt-8 text-center text-shadow-neon">{error}</p>}
 
                 <form onSubmit={handleSubmit(create)}>
                     <div className='space-y-5'>
