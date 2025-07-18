@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from './app/store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.jsx'
-import Signup from './pages/Signup.jsx'
+import SignUp from './pages/SignUp.jsx'
 import AllPosts from './pages/AllPost.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             path: "/signup",
             element: (
                 <AuthLayout authentication={false}>
-                    <Signup />
+                    <SignUp />
                 </AuthLayout>
             ),
         },
